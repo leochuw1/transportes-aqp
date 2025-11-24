@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta A-1 - Transporte AQP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ruta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-bus"></i>
+                    <h1>Transporte AQP</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#rutas">Rutas</a></li>
+                    <li><a href="index.html#mapa">Mapa</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+                
+                <!-- User Menu -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                        <span id="userName"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i>
+                            Mi Perfil
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-route"></i>
+                            Mis Rutas
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Configuración
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </a>
+                    <a href="login.html" class="register-btn-small">Registrarse</a>
+                </div>
+
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Inicio</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html#rutas">Rutas</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="currentRoute">Ruta A-1</span>
+        </div>
+    </div>
+
+    <!-- Detalle de Ruta -->
+    <section class="route-detail">
+        <div class="container">
+            <div class="route-header-detail">
+                <div class="route-basic-info">
+                    <div class="route-number-large" id="routeNumber">A-1</div>
+                    <div class="route-title">
+                        <h1 id="routeTitle">Plaza de Armas - Yanahuara</h1>
+                        <div class="route-type-badge" id="routeType">Bus</div>
+                    </div>
+                </div>
+                <div class="route-actions">
+                    <button class="btn-favorite" id="favoriteBtn">
+                        <i class="far fa-heart"></i>
+                        Guardar Ruta
+                    </button>
+                    <button class="btn-share" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        Compartir
+                    </button>
+                </div>
+            </div>
+
+            <div class="route-content">
+                <div class="route-main-info">
+                    <!-- Información de Tiempo y Distancia -->
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <div class="info-content">
+                                <span class="info-label">Tiempo estimado</span>
+                                <span class="info-value" id="routeTime">25 min</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-road"></i>
+                            <div class="info-content">
+                                <span class="info-label">Distancia</span>
+                                <span class="info-value" id="routeDistance">5.2 km</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-bus"></i>
+                            <div class="info-content">
+                                <span class="info-label">Frecuencia</span>
+                                <span class="info-value" id="routeFrequency">Cada 15 min</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div class="info-content">
+                                <span class="info-label">Tarifa</span>
+                                <span class="info-value" id="routeFare">S/ 1.50</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mapa de la Ruta -->
+                    <div class="route-map-section">
+                        <h3>Mapa de la Ruta</h3>
+                        <div class="route-map" id="routeMap">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Mapa interactivo de la ruta</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paradas -->
+                    <div class="stops-section">
+                        <h3>Paradas Principales</h3>
+                        <div class="stops-timeline">
+                            <div class="stop-item">
+                                <div class="stop-marker start"></div>
+                                <div class="stop-info">
+                                    <h4>Plaza de Armas</h4>
+                                    <p>Punto de inicio</p>
+                                </div>
+                            </div>
+                            <div class="stop-item">
+                                <div class="stop-marker"></div>
+                                <div class="stop-info">
+                                    <h4>Mercado San Camilo</h4>
+                                    <p>Parada intermedia</p>
+                                </div>
+                            </div>
+                            <div class="stop-item">
+                                <div class="stop-marker"></div>
+                                <div class="stop-info">
+                                    <h4>Puente Grau</h4>
+                                    <p>Parada intermedia</p>
+                                </div>
+                            </div>
+                            <div class="stop-item">
+                                <div class="stop-marker end"></div>
+                                <div class="stop-info">
+                                    <h4>Mirador de Yanahuara</h4>
+                                    <p>Punto final</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="route-sidebar">
+                    <!-- Horarios -->
+                    <div class="schedule-card">
+                        <h3>Horarios</h3>
+                        <div class="schedule-info">
+                            <div class="schedule-item">
+                                <span class="schedule-day">Lunes - Viernes</span>
+                                <span class="schedule-time">05:30 - 22:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-day">Sábados</span>
+                                <span class="schedule-time">06:00 - 21:30</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-day">Domingos</span>
+                                <span class="schedule-time">07:00 - 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información Adicional -->
+                    <div class="info-card-sidebar">
+                        <h3>Información Adicional</h3>
+                        <ul class="additional-info">
+                            <li>
+                                <i class="fas fa-wheelchair"></i>
+                                <span>Accesible para sillas de ruedas</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-wifi"></i>
+                                <span>WiFi disponible</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-snowflake"></i>
+                                <span>Aire acondicionado</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-bolt"></i>
+                                <span>Frecuencia en horas pico: 8 min</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Rutas Similares -->
+                    <div class="similar-routes">
+                        <h3>Rutas Similares</h3>
+                        <div class="similar-route">
+                            <a href="ruta.html?ruta=A-2" class="similar-route-link">
+                                <span class="route-badge">A-2</span>
+                                <span>Plaza de Armas - Cayma</span>
+                            </a>
+                        </div>
+                        <div class="similar-route">
+                            <a href="ruta.html?ruta=B-3" class="similar-route-link">
+                                <span class="route-badge">B-3</span>
+                                <span>Yanahuara - Sachaca</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Transporte AQP</h3>
+                    <p>La mejor manera de planificar tus viajes en el transporte público de Arequipa.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#rutas">Rutas</a></li>
+                        <li><a href="index.html#mapa">Mapa</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Arequipa, Perú</li>
+                        <li><i class="fas fa-phone"></i> +51 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@transporte-aqp.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Transporte AQP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/ruta.js"></script>
+</body>
+</html>

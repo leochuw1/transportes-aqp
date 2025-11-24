@@ -1,0 +1,402 @@
+/* Estilos específicos para la página de detalle de ruta */
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: var(--light-color);
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+}
+
+.breadcrumb i {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.breadcrumb span {
+    color: var(--text-light);
+}
+
+/* Detalle de Ruta */
+.route-detail {
+    padding: 2rem 0 4rem;
+}
+
+.route-header-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-color);
+}
+
+.route-basic-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.route-number-large {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.route-title h1 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.route-type-badge {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.route-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-favorite, .btn-share {
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-favorite:hover, .btn-share:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-favorite.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Layout del contenido */
+.route-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+}
+
+/* Tarjetas de información */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+}
+
+.info-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* Mapa de la ruta */
+.route-map-section {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.route-map-section h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.route-map {
+    height: 300px;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.route-map .map-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+.route-map .map-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Línea de tiempo de paradas */
+.stops-section {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.stops-section h3 {
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.stops-timeline {
+    position: relative;
+}
+
+.stops-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.stop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.stop-marker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--primary-color);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.stop-marker.start {
+    background: #4caf50;
+    box-shadow: 0 0 0 2px #4caf50;
+}
+
+.stop-marker.end {
+    background: #f44336;
+    box-shadow: 0 0 0 2px #f44336;
+}
+
+.stop-info h4 {
+    margin-bottom: 0.3rem;
+    color: var(--dark-color);
+}
+
+.stop-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Sidebar */
+.route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.schedule-card, .info-card-sidebar, .similar-routes {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.schedule-card h3, .info-card-sidebar h3, .similar-routes h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--light-color);
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-day {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.schedule-time {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.additional-info {
+    list-style: none;
+}
+
+.additional-info li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.additional-info i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+.similar-route {
+    margin-bottom: 0.8rem;
+}
+
+.similar-route:last-child {
+    margin-bottom: 0;
+}
+
+.similar-route-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s;
+}
+
+.similar-route-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.route-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.similar-route-link:hover .route-badge {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .route-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .route-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .route-header-detail {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .route-basic-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .route-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .route-number-large {
+        font-size: 2rem;
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .route-title h1 {
+        font-size: 1.5rem;
+    }
+}

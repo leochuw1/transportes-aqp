@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte AQP - Rutas de Transporte en Arequipa</title>
+
+    <!-- RUTA CORRECTA PARA FLASK -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-bus"></i>
+                <h1>Transporte AQP</h1>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#rutas">Rutas</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+
+                <!-- MENU CUANDO HAY SESIÓN -->
+                {% if session.get('email') %}
+                <div class="user-menu" id="userMenu">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                        <span>{{ session['name'] }} {{ session['surnames'] }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Mi Perfil
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-route"></i> Mis Rutas
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url_for('auth.logout') }}" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+
+                {% else %}
+                <!-- BOTONES CUANDO NO HAY SESIÓN -->
+                <div class="auth-buttons">
+    <a href="{{ url_for('auth.login_page') }}" class="login-link">
+        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+    </a>
+    <a href="{{ url_for('auth.login_page') }}" class="register-btn-small">Registrarse</a>
+</div>
+
+                {% endif %}
+
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Encuentra tu ruta de transporte en Arequipa</h2>
+            <p>Planifica tu viaje de manera rápida y sencilla.</p>
+        </div>
+    </section>
+
+    <!-- Buscador -->
+    <div class="container">
+        <div class="search-container">
+
+            <!-- AHORA FUNCIONA CON FLASK -->
+            <form class="search-form" id="searchForm" method="POST" action="/buscar">
+
+                <div class="form-group">
+                    <label for="origen"><i class="fas fa-map-marker-alt"></i> Origen</label>
+                    <input type="text" id="origen" name="origen"
+                        value="{{ origen if origen else '' }}"
+                        placeholder="Ej: Plaza de Armas">
+                </div>
+
+                <div class="form-group">
+                    <label for="destino"><i class="fas fa-flag"></i> Destino</label>
+                    <input type="text" id="destino" name="destino"
+                        value="{{ destino if destino else '' }}"
+                        placeholder="Ej: Yanahuara">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-transporte"><i class="fas fa-bus"></i> Tipo de transporte</label>
+                    <select id="tipo-transporte" name="tipo-transporte">
+                        <option value="todos">Todos</option>
+                        <option value="bus">Bus</option>
+                        <option value="combi">Combis</option>
+                        <option value="colectivo">Colectivos</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="search-btn">Buscar Ruta</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Rutas Populares -->
+    <section class="section" id="rutas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rutas Disponibles</h2>
+                <p>Resultados según tu búsqueda</p>
+            </div>
+
+            <div class="routes-grid">
+                {% if rutas %}
+                    {% for r in rutas %}
+                    <div class="route-card">
+                        <div class="route-number">{{ r.codigo }}</div>
+                        <h3>{{ r.nombre }}</h3>
+                        <p>Tipo: {{ r.tipo_transporte }}</p>
+
+                        <a href="/ruta/{{ r.id_ruta }}" class="route-btn">Ver detalles</a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No se encontraron rutas.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Transporte AQP</h3>
+                    <p>La mejor forma de planificar tus viajes.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#rutas">Rutas</a></li>
+                        <li><a href="#mapa">Mapa</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>&copy; 2023 Transporte AQP</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>

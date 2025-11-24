@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte AQP - Rutas de Transporte en Arequipa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-bus"></i>
+                <h1>Transporte AQP</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#rutas">Rutas</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                
+                <!-- User Menu (se muestra cuando hay sesión) -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                        <span id="userName"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i>
+                            Mi Perfil
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-route"></i>
+                            Mis Rutas
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Configuración
+                        </a>S
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Auth Buttons (se muestran cuando NO hay sesión) -->
+                <div class="auth-buttons" id="authButtons">
+                    <a href="login.html" class="login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </a>
+                    <a href="login.html" class="register-btn-small">Registrarse</a>
+                </div>
+
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Encuentra tu ruta de transporte en Arequipa</h2>
+            <p>Descubre las mejores rutas de transporte público en la Ciudad Blanca. Planifica tu viaje de manera rápida y sencilla.</p>
+        </div>
+    </section>
+
+    <!-- Buscador -->
+    <div class="container">
+        <div class="search-container">
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="origen"><i class="fas fa-map-marker-alt"></i> Origen</label>
+                    <input type="text" id="origen" placeholder="Ej: Plaza de Armas">
+                </div>
+                <div class="form-group">
+                    <label for="destino"><i class="fas fa-flag"></i> Destino</label>
+                    <input type="text" id="destino" placeholder="Ej: Yanahuara">
+                </div>
+                <div class="form-group">
+                    <label for="tipo-transporte"><i class="fas fa-bus"></i> Tipo de transporte</label>
+                    <select id="tipo-transporte">
+                        <option value="todos">Todos</option>
+                        <option value="bus">Bus</option>
+                        <option value="combis">Combis</option>
+                        <option value="colectivos">Colectivos</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">Buscar Ruta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rutas Populares -->
+    <section class="section" id="rutas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rutas Populares</h2>
+                <p>Estas son algunas de las rutas más utilizadas en Arequipa</p>
+            </div>
+            <div class="routes-grid" id="routesGrid">
+                <!-- Las rutas se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="section" id="mapa">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mapa de Rutas</h2>
+                <p>Visualiza todas las rutas de transporte en el mapa interactivo</p>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Mapa Interactivo</h3>
+                    <p>Aquí se mostraría un mapa con todas las rutas de transporte de Arequipa</p>
+                    <button id="showMapBtn" class="map-btn">Mostrar Mapa</button>
+                </div>
+                <div id="map" class="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Transporte AQP</h3>
+                    <p>La mejor manera de planificar tus viajes en el transporte público de Arequipa.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#rutas">Rutas</a></li>
+                        <li><a href="#mapa">Mapa</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Arequipa, Perú</li>
+                        <li><i class="fas fa-phone"></i> +51 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@transporte-aqp.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Transporte AQP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
