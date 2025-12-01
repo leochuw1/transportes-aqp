@@ -1,3 +1,5 @@
+docs: documentar inicio de app Flask 
+
 # app.py
 from flask import Flask
 import config
